@@ -1,0 +1,11 @@
+image: ghcr.io/cirruslabs/android-sdk:34
+pipelines:
+  default:
+    - step:
+        name: build
+        script:
+          - wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          - unzip -q gradle-8.7-bin.zip
+          - ./gradle-8.7/bin/gradle assembleDebug --no-daemon
+        artifacts:
+          - app/build/outputs/apk/debug/app-debug.apk
